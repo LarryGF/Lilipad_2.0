@@ -10,7 +10,7 @@
           <div class="md-toolbar-section-end">
 
           </div>
-            <h1 ><img src="/static/logo1.png">LiliPad</h1>
+            <h1 ><img src="/static/logo1.png">LiliPad 2.0</h1>
           </div>
 
           <div class="md-toolbar-row">
@@ -41,27 +41,27 @@
       <md-app-content>
 
       <div v-if="active =='step1'">
-        <Main :disabled="disableButton"/>
+        <Step1/>
       </div>
       <div v-if="active =='step2'">
-        <Main :disabled="disableButton"/>
+        <Step2/>
       </div>
       <div v-if="active =='step3'">
-        <Main :disabled="disableButton"/>
+        <Step3/>
       </div>
       <div v-if="active =='step4'">
-        <Functions :disabled="disableButton"/>
+        <Step4/>
         </div>
         <div v-if="active =='step5'">
-          <Management/>
+          <Step5/>
       </div>
       <div v-if="active =='step6'">
-        <Options/>
+        <Step6/>
       </div>
-      <div v-if="active =='step6'">
-        <Contact/>
+      <div v-if="active =='step7'">
+        <Step7/>
       </div>
-      <SnackBar :showSnackbar="showSnackBar" :mensaje="message"/>
+      
       </md-app-content>
     </md-app>
   </div>
