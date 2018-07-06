@@ -23,26 +23,37 @@
 
 <script type="text/javascript">
 export default {
-  name: "Step1",
-  props: {
-    disabled: {
-      type: Boolean,
-      required: false
+    name: "Step1",
+    props: {
+        disabled: {
+            type: Boolean,
+            required: false
+        }
+    },
+    data() {
+        return {
+            users: {
+                act: null,
+                new: null,
+                fut: null
+            }
+        };
+    },
+    methods: {
+        save: function(table, list) {
+            eel.save(table, list)();
+        },
+        load: function(activeTab, list) {
+            eel.load(["step_1"])(result => {
+                this.users.act = result[0][0]["usract"];
+                this.users.new = result[0][0]["usrnew"];
+                this.users.fut = result[0][0]["usrfutr"];
+                console.log(result);
+            });
+        }
+    },
+    created() {
+        this.load();
     }
-  },
-  data() {
-    return {
-      users: {
-        act: null,
-        new: null,
-        fut: null
-      }
-    };
-  },
-  methods: {
-    save: function(table, list) {
-      eel.save(table, list)();
-    }
-  }
 };
 </script> 

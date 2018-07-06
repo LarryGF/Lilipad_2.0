@@ -1,6 +1,6 @@
 # Imports
 import eel
-from save_load import *
+from save_load import func_save, func_load
 from functions import *
 
 #
