@@ -14,15 +14,11 @@ export default {
         alert: "background-color:black;color:white",
         showSnackBar: false,
         message: "",
-        tabla_servicios: [],
-
         tables: {
             tab_serv: {
                 name: "tab_serv",
                 title: "Servicios",
-                table: [
-                    { service: "loren", gordo: "arlett", ambulante: "leo" }
-                ],
+                table: [],
                 columns: [
                     { label: "Servicio", sort: "service" },
                     { label: "Subservicio", sort: "subservice" },
@@ -74,6 +70,22 @@ export default {
             }
         }
     }),
+    computed: {
+        load: function() {
+            eel.load(["tab_serv", "existentes", "nuevos", "futuros"])(
+                result => {
+                    this.tables.tab_serv.table = result[0];
+                    this.tables.existentes.table = result[1];
+                    this.tables.nuevos.table = result[2];
+                    this.tables.futuros.table = result[3];
+                }
+            );
+        }
+    },
+    methods: {},
+    created() {
+        this.load();
+    },
     components: {
         Table
     }
