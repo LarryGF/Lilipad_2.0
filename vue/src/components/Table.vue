@@ -1,7 +1,5 @@
 <template>
   <div>
-    
-
 <md-table @md-selected="onSelect" v-model="data" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
     <md-table-toolbar>
         <h1 class="md-title">{{table.title}}</h1>
@@ -9,6 +7,8 @@
         <md-button class="md-raised md-primary" @click="save(table.name,data)">Guardar</md-button>
 
         <md-button class="md-raised md-primary" @click="change(table.name)">Nuevo</md-button>
+        <!-- <md-button class="md-raised md-primary" @click="$emit('update:table',[{service:'mi pinga'}])">Nuevo</md-button> -->
+
     </md-table-toolbar>
 
     <md-table-row md-selectable="multiple" md-auto-select slot="md-table-row" slot-scope="{ item }">
@@ -28,6 +28,7 @@
 </template> 
 
 <script type="text/javascript">
+import Dialog from './Dialog.vue'
 export default {
     name: "Table",
     props: {
@@ -51,6 +52,9 @@ export default {
     },
     methods: {
         onSelect: function() {}
+    },
+    components:{
+        Dialog
     }
 };
 </script> 

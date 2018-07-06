@@ -1,6 +1,6 @@
 <template>
 <md-content>
-   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="table.table" :table="table"/>
+   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="table.table" :table="table" @update:table="table.table = $event"/>
    
 </md-content>
 </template>
@@ -10,8 +10,6 @@ import Table from "./Table.vue";
 export default {
     name: "Step2",
     data: () => ({
-        active: "step1",
-        alert: "background-color:black;color:white",
         tables: {
             tab_serv: {
                 name: "tab_serv",
@@ -82,7 +80,7 @@ export default {
     },
     methods: {},
     created() {
-        this.load();
+        this.load;
     },
     components: {
         Table
