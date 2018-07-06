@@ -22,7 +22,6 @@
 					<md-field>
 
 					<md-select v-model="data.tab_gestor" placeholder="Gestor de Nube">
-						
 						<md-option  value="OpenNebula">OpenNebula</md-option>
 						<md-option  value="Proxmox">Proxmox</md-option>
 					</md-select>
@@ -46,8 +45,9 @@
         </md-dialog-content>
 
         <md-dialog-actions>
+			
             <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
-            <md-button class="md-primary md-raised" @click="create_offline(announce)">Crear</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create')" >Crear</md-button>
         </md-dialog-actions>
     </md-dialog>
 
@@ -84,10 +84,29 @@ export default {
                 tab_hipervisor: null,
                 tab_vm: null,
                 tab_node: null
-            }
+            },
+            check: null
         };
     },
-    methods: {},
+    methods: {
+        new: function() {
+            if (this.mode === "tab_serv") {
+                var send_data = {
+                    service: this.tab_service,
+                    subservice: this.tab_subservice,
+                    solution: this.tab_solution,
+                    gestor: this.tab_gestor,
+                    vmachine: this.tab_vm,
+                    node: this.tab_node,
+                    hipervisor: this.tab_hipervisor
+                };
+            } else {
+                console.log("otro");
+            }
+            console.log("aui");
+            this.$emit("create", send_data);
+        }
+    },
     computed: {},
     created() {}
 };
