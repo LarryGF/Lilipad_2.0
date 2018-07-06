@@ -10,43 +10,39 @@
 
 
 <script>
-
-import Container from './components/Container.vue';
+import Container from "./components/Container.vue";
 
 export default {
-  name: 'App',
-  data() {
-      return {  
-          
-          
-
-          }
+    name: "App",
+    data() {
+        return {};
     },
-  components: {
-    Container
-  }
-}
+    components: {
+        Container
+    }
+};
 </script>
 
 
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  min-height: 100%;
-
-  
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    min-height: 100%;
+}
+.md-menu-content {
+    z-index: 11;
 }
 
 img {
-  width: 80px;
-
+    width: 80px;
 }
-html, body {
+html,
+body {
     height: 100%;
 }
 </style>

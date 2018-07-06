@@ -1,15 +1,21 @@
 <template>
 <md-content>
-   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="table.table" :table="table" @update:table="table.table = $event"/>
+   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="table.table" :table="table"  @new="dialog_active=true, dialog.name = $event"/>
+   <Dialog :mode="dialog.name" :active="dialog_active" @close="dialog_active=false" />
    
 </md-content>
 </template>
 
 <script>
 import Table from "./Table.vue";
+import Dialog from "./Dialog.vue";
 export default {
     name: "Step2",
     data: () => ({
+        dialog_active: false,
+        dialog: {
+            name: ""
+        },
         tables: {
             tab_serv: {
                 name: "tab_serv",
@@ -83,7 +89,8 @@ export default {
         this.load;
     },
     components: {
-        Table
+        Table,
+        Dialog
     }
 };
 </script>

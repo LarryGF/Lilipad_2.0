@@ -3,5 +3,8 @@ Todo:
   ☐ Poblar cada una de las vistas de los pasos
   ☐ Refactorizar el codigo python
   ☐ arreglar el metodo para borrar
-  ☐ Agregarle un empty state a cada una de las tablas
+  ☐ hacer el dialogo para agregar servicios
+  ☐ pasar los datos con $emit(<name>,data) 
 
+Archive:
+  ✔ Agregarle un empty state a cada una de las tablas @done(18-07-06 01:02) @project(Todo)

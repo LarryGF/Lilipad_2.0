@@ -6,8 +6,9 @@
         <md-button class="md-raised md-accent" @click="del_item(table.name)">Borrar</md-button>
         <md-button class="md-raised md-primary" @click="save(table.name,data)">Guardar</md-button>
 
-        <md-button class="md-raised md-primary" @click="change(table.name)">Nuevo</md-button>
+        <md-button class="md-raised md-primary" @click="$emit('new',table.name)">Nuevo</md-button>
         <!-- <md-button class="md-raised md-primary" @click="$emit('update:table',[{service:'mi pinga'}])">Nuevo</md-button> -->
+    
 
     </md-table-toolbar>
 
@@ -28,7 +29,7 @@
 </template> 
 
 <script type="text/javascript">
-import Dialog from './Dialog.vue'
+import Dialog from "./Dialog.vue";
 export default {
     name: "Table",
     props: {
@@ -53,7 +54,7 @@ export default {
     methods: {
         onSelect: function() {}
     },
-    components:{
+    components: {
         Dialog
     }
 };
