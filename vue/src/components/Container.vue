@@ -40,25 +40,27 @@
 
       <md-app-content>
 
-      <div v-if="active =='step1'">
+      <div v-if="active =='step_1'">
+        
         <Step1/>
       </div>
-      <div v-if="active =='step2'">
+      <div v-if="active =='step_2'">
+        
         <Step2/>
       </div>
-      <div v-if="active =='step3'">
+      <div v-if="active =='step_3'">
         <Step3/>
       </div>
-      <div v-if="active =='step4'">
+      <div v-if="active =='step_4'">
         <Step4/>
         </div>
-        <div v-if="active =='step5'">
+        <div v-if="active =='step_5'">
           <Step5/>
       </div>
-      <div v-if="active =='step6'">
+      <div v-if="active =='step_6'">
         <Step6/>
       </div>
-      <div v-if="active =='step7'">
+      <div v-if="active =='step_7'">
         <Step7/>
       </div>
       
@@ -69,17 +71,17 @@
 
 <style lang="css" scoped>
 .md-app {
-  min-height: 100%;
-  border: 1px solid rgba(#000, 0.12);
+    min-height: 100%;
+    border: 1px solid rgba(#000, 0.12);
 }
 img {
-  height: 45px;
-  width: 45px;
-  margin-right: 10px;
+    height: 45px;
+    width: 45px;
+    margin-right: 10px;
 }
 h1 {
-  margin-top: 30px;
-  margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 </style>
 
@@ -94,31 +96,29 @@ import Step7 from "./Step7.vue";
 import Tools from "./Tools.vue";
 
 export default {
-  name: "Container",
-  data: () => ({
-    active: "step1",
-    alert: "background-color:black;color:white",
-    showSnackBar: false,
-    message: ""
-  }),
-  computed: {},
-  methods: {
-    change: function(activeTab) {
-      this.active = activeTab;
+    name: "Container",
+    data: () => ({
+        active: "step_1",
+        alert: "background-color:black;color:white",
+        showSnackBar: false,
+        message: ""
+    }),
+    computed: {},
+    methods: {
+        change: function(activeTab) {
+            this.active = activeTab;
+        }
+    },
+    created() {},
+    components: {
+        Step1,
+        Step2,
+        Step3,
+        Step4,
+        Step5,
+        Step6,
+        Step7,
+        Tools
     }
-  },
-  created() {
-    console.log("Created Container");
-  },
-  components: {
-    Step1,
-    Step2,
-    Step3,
-    Step4,
-    Step5,
-    Step6,
-    Step7,
-    Tools
-  }
 };
 </script>
