@@ -1,7 +1,7 @@
 <template>
 <md-content>
    <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="table.table" :table="table"  @new="dialog_active=true, dialog.name = $event"/>
-   <Dialog :mode="dialog.name" :active="dialog_active" @close="dialog_active=false" @create="create($event)"/>
+   <Dialog :mode="dialog.name" :active="dialog_active" @close="dialog_active=false" @create="create_service($event)"/>
    
 </md-content>
 </template>
@@ -85,8 +85,8 @@ export default {
         }
     },
     methods: {
-        create: function(data) {
-            console.log(data);
+        create_service: function(data) {
+            this.tables[this.dialog.name].table.push(data);
         }
     },
     created() {

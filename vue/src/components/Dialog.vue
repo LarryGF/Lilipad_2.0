@@ -47,7 +47,7 @@
         <md-dialog-actions>
 			
             <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
-            <md-button class="md-primary md-raised" @click="$emit('create')" >Crear</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
         </md-dialog-actions>
     </md-dialog>
 
@@ -89,22 +89,21 @@ export default {
         };
     },
     methods: {
-        new: function() {
+        new_service: function() {
             if (this.mode === "tab_serv") {
                 var send_data = {
-                    service: this.tab_service,
-                    subservice: this.tab_subservice,
-                    solution: this.tab_solution,
-                    gestor: this.tab_gestor,
-                    vmachine: this.tab_vm,
-                    node: this.tab_node,
-                    hipervisor: this.tab_hipervisor
+                    service: this.data.tab_service,
+                    subservice: this.data.tab_subservice,
+                    solution: this.data.tab_solution,
+                    gestor: this.data.tab_gestor,
+                    vmachine: this.data.tab_vm,
+                    node: this.data.tab_node,
+                    hipervisor: this.data.tab_hipervisor
                 };
             } else {
                 console.log("otro");
             }
-            console.log("aui");
-            this.$emit("create", send_data);
+            return send_data;
         }
     },
     computed: {},
