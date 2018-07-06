@@ -12,8 +12,6 @@ export default {
     data: () => ({
         active: "step1",
         alert: "background-color:black;color:white",
-        showSnackBar: false,
-        message: "",
         tables: {
             tab_serv: {
                 name: "tab_serv",
@@ -38,7 +36,7 @@ export default {
                     { label: "Tipo", sort: "type" },
                     { label: "Clasificación", sort: "class" },
                     { label: "Estructura", sort: "structure" },
-                    { label: "Criticidad", sort: "int" },
+                    { label: "Criticidad", sort: "criticity" },
                     { label: "Comentarios", sort: "comments" }
                 ]
             },
@@ -51,7 +49,7 @@ export default {
                     { label: "Tipo", sort: "type" },
                     { label: "Clasificación", sort: "class" },
                     { label: "Estructura", sort: "structure" },
-                    { label: "Criticidad", sort: "int" },
+                    { label: "Criticidad", sort: "criticity" },
                     { label: "Comentarios", sort: "comments" }
                 ]
             },
@@ -64,7 +62,7 @@ export default {
                     { label: "Tipo", sort: "type" },
                     { label: "Clasificación", sort: "class" },
                     { label: "Estructura", sort: "structure" },
-                    { label: "Criticidad", sort: "int" },
+                    { label: "Criticidad", sort: "criticity" },
                     { label: "Comentarios", sort: "comments" }
                 ]
             }

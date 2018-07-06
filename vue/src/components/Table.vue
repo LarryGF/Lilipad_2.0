@@ -15,6 +15,11 @@
         <md-table-cell v-for="column in columns" :key="column.label" :md-label="column.label" :md-sort-by="column.sort" md-numeric>{{ item[column.sort] }}</md-table-cell>
     
     </md-table-row>
+    <md-table-empty-state
+        md-label="No hay servicios"
+        :md-description="`No hay servicios agregados a la tabla en estos momentos.`">
+        <md-button class="md-primary md-raised" >Nuevo</md-button>
+      </md-table-empty-state>
 </md-table>
 
       
