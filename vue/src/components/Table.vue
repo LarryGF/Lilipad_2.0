@@ -63,3 +63,12 @@ export default {
 };
 </script> 
  
+<style>
+.md-button.md-primary {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.md-card {
+    margin-top: 10px;
+}
+</style>

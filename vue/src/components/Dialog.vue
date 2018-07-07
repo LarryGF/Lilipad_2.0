@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    {{mode}}{{active}}    
+
 <md-dialog  v-if="mode == 'tab_serv'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar Servivicio</md-dialog-title>
         <md-dialog-content>
