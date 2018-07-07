@@ -1,7 +1,8 @@
 <template>
 
-<md-content>
-<md-dialog  v-if="mode == 'tab_serv'" :md-active.sync="active" @md-closed="$emit('close')">
+<div>
+    {{mode}}{{active}}    
+<md-dialog  v-if="mode == 'tab_serv'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar Servivicio</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -51,7 +52,50 @@
         </md-dialog-actions>
     </md-dialog>
 
-</md-content>
+    <md-dialog  v-if="mode == 'existentes' || mode == 'nuevos' || mode == 'futuros'" :md-active.sync="active" :md-click-outside-to-close="false">
+        <md-dialog-title>Agregar servicios {{mode}}</md-dialog-title>
+        <md-dialog-content>
+					<md-field>
+						<label>Nombre</label>
+						<md-input v-model="data_mix.name" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Tipo</label>
+						<md-input v-model="data_mix.type" required></md-input>
+					</md-field>
+					
+					<md-field>
+						<label>Clasificacion</label>
+						<md-input v-model="data_mix.class" required></md-input>
+					</md-field>
+
+					<md-field>
+						<label>Estructura</label>
+						<md-input v-model="data_mix.structure" required></md-input>
+					</md-field>
+
+					<md-field>
+						<label>Criticidad</label>
+						<md-input v-model="data_mix.criticity" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Comentarios</label>
+						<md-input v-model="data_mix.comment" required></md-input>
+					</md-field>
+								
+        </md-dialog-content>
+
+        <md-dialog-actions>
+			
+            <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+    
+
+</div>
 
 
 
@@ -85,7 +129,14 @@ export default {
                 tab_vm: null,
                 tab_node: null
             },
-            check: null
+            data_mix: {
+                name: null,
+                type: null,
+                class: null,
+                structure: null,
+                criticity: null,
+                comments: null
+            }
         };
     },
     methods: {
@@ -100,8 +151,29 @@ export default {
                     node: this.data.tab_node,
                     hipervisor: this.data.tab_hipervisor
                 };
-            } else {
-                console.log("otro");
+                this.data = {
+                    tab_service: null,
+                    tab_subservice: null,
+                    tab_solution: null,
+                    tab_gestor: null,
+                    tab_hipervisor: null,
+                    tab_vm: null,
+                    tab_node: null
+                };
+            } else if (
+                this.mode == "existentes" ||
+                this.mode == "nuevos" ||
+                this.mode == "futuros"
+            ) {
+                var send_data = this.data_mix;
+                this.data_mix = {
+                    name: null,
+                    type: null,
+                    class: null,
+                    structure: null,
+                    criticity: null,
+                    comments: null
+                };
             }
             return send_data;
         }
