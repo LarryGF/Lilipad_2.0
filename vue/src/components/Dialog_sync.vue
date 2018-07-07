@@ -26,52 +26,44 @@
 </template>
 
 <script>
-  export default {
-    name: 'Dialog_sync',
-    props:{
-        dialactive:{
-            type:Boolean,
-            required:true,
+export default {
+    name: "Dialog_sync",
+    props: {
+        dialactive: {
+            type: Boolean,
+            required: true
         },
-        amount:{
-            type:Number,
-
+        amount: {
+            type: Number
         }
     },
 
     data: () => ({
-      active: 'first',
-      first: false,
-      second: false,
-      third: false,
-      firstStepError: null,
-      
-      sincerror:null,
+        active: "first",
+        first: false,
+        second: false,
+        third: false,
+        firstStepError: null,
 
+        sincerror: null
     }),
 
     methods: {
-      setDone (id, index) {
-        this[id] = true
+        setDone(id, index) {
+            this[id] = true;
 
-        
-        this.firstStepError = null
+            this.firstStepError = null;
 
-        if (index) {
-          this.active = index
+            if (index) {
+                this.active = index;
+            }
+        },
+        setError() {
+            this.firstStepError = "This is an error!";
         }
-      },
-      setError () {
-        this.firstStepError = 'This is an error!'
-      },
-      
-    },
-    
-  }
+    }
+};
 </script>
 
 <style lang="css" scoped>
-  .md-steppers {
-
-  }
 </style>
