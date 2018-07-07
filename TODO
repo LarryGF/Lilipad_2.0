@@ -5,6 +5,7 @@ Todo:
   ☐ arreglar el metodo para borrar
   ☐ averiguar como averiguar en vue si aun no se ha cargado un elemento
   ☐ modificar la tabla para poder pasarle los colores a las columnas
+  ☐ hacer un snackbar para mostrar el output del correo y la navegacion
   
 Archive:
   ✔ pasar los datos con $emit(<name>,data) @done(18-07-06 21:18) @project(Todo)

@@ -173,28 +173,57 @@
         <md-dialog-actions>
 			
             <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
-            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create')" >Crear</md-button>
         </md-dialog-actions>
     </md-dialog>
 
     <md-dialog  v-if="mode == 'correo'" :md-active.sync="active" :md-click-outside-to-close="false">
-        <md-dialog-title>Agregar recursos asignados a DSaaS</md-dialog-title>
+        <md-dialog-title>Correr las pruebas de QoE para el correo</md-dialog-title>
+        <md-dialog-content>
+					
+                <md-field>
+					<label>Ruta del archivo log</label>
+					<md-input v-model="data_correo.ruta_mail" required></md-input>
+				</md-field>
+
+				<md-field>
+					<label>Fecha (en la forma MMDD)</label>
+					<md-input v-model="data_correo.date_mail" required></md-input>
+				</md-field>
+        </md-dialog-content>
+
+        <md-dialog-actions>
+			
+            <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+
+     <md-dialog  v-if="mode == 'navegacion'" :md-active.sync="active" :md-click-outside-to-close="false">
+        <md-dialog-title>Correr las pruebas de QoE para navegacion</md-dialog-title>
         <md-dialog-content>
 					<md-field>
-						<label>Subentidad</label>
-						<md-input v-model="data_dsaas.subentity" required></md-input>
-					</md-field>
+					<label>Ruta</label>
+					<md-input v-model="data_navegacion.ruta_nav" required></md-input>
+				</md-field>
+
+				<md-field>
+					<label>Lista de usuarios (separados por coma)</label>
+					<md-input v-model="data_navegacion.usr_list" required></md-input>
+				</md-field>
+
+				<md-field>
+					<label>Fecha limite inferior (DD/MM/YYYY HH:MM)</label>
+					<md-input v-model="data_navegacion.date_nav_inf" required></md-input>
+				</md-field>
+
+				<md-field>
+					<label>Fecha limite superior (DDM/MY/YYY HH:MM)</label>
+					<md-input v-model="data_navegacion.date_nav_sup" required></md-input>
+				</md-field>
 				
-					<md-field>
-						<label>Almacenamiento</label>
-						<md-input v-model="data_dsaas.storage" required></md-input>
-					</md-field>
-					
-					<md-field>
-						<label>Salvas</label>
-						<md-input v-model="data_dsaas.saves" required></md-input>
-					</md-field>
         </md-dialog-content>
+               
 
         <md-dialog-actions>
 			
@@ -260,6 +289,16 @@ export default {
                 subentity: null,
                 storage: null,
                 saves: null
+            },
+            data_correo: {
+                ruta_mail: null,
+                date_mail: null
+            },
+            data_navegacion: {
+                ruta_nav: null,
+                usr_list: null,
+                date_nav_inf: null,
+                date_nav_sup: null
             }
         };
     },

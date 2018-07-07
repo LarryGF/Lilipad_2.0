@@ -1,6 +1,6 @@
 <template>
     <md-content>
-        {{dialog_active}}{{dialog.name}}
+        
         <h3>Escoja cual de las pruebas desea realizar:</h3>
         <md-button class="md-primary md-raised" @click="dialog_active=true,dialog.name='correo'">Correo</md-button>
 		<md-button class="md-primary md-raised" @click="dialog_active=true,dialog.name='navegacion'">Navegacion</md-button>
@@ -18,6 +18,9 @@ export default {
         dialog: {
             name: ""
         }
-    })
+    }),
+    components: {
+        Dialog
+    }
 };
 </script>
