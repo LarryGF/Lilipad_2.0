@@ -94,6 +94,88 @@
         </md-dialog-actions>
     </md-dialog>
     
+    <md-dialog  v-if="mode == 'iaas'" :md-active.sync="active" :md-click-outside-to-close="false">
+        <md-dialog-title>Agregar recursos asignados a IaaS</md-dialog-title>
+        <md-dialog-content>
+					<md-field>
+						<label>Subentidad</label>
+						<md-input v-model="data_iaas.subentity" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>CPU</label>
+						<md-input v-model="data_iaas.cpu" required></md-input>
+					</md-field>
+					
+					<md-field>
+						<label>RAM</label>
+						<md-input v-model="data_iaas.ram" required></md-input>
+					</md-field>
+
+					<md-field>
+						<label>Almacenamiento</label>
+						<md-input v-model="data_iaas.cap_alm" required></md-input>
+					</md-field>
+
+					<md-field>
+						<label>Throughput Almacenamiento</label>
+						<md-input v-model="data_iaas.thru_alm" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Transmision (Red)</label>
+						<md-input v-model="data_iaas.trans_net" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Recepcion (Red)</label>
+						<md-input v-model="data_iaas.rec_net" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Nucleos (GPU)</label>
+						<md-input v-model="data_iaas.core_gpu" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Memoria (GPU)</label>
+						<md-input v-model="data_iaas.mem_gpu" required></md-input>
+					</md-field>
+								
+        </md-dialog-content>
+
+        <md-dialog-actions>
+			
+            <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+
+    <md-dialog  v-if="mode == 'dsaas'" :md-active.sync="active" :md-click-outside-to-close="false">
+        <md-dialog-title>Agregar recursos asignados a DSaaS</md-dialog-title>
+        <md-dialog-content>
+					<md-field>
+						<label>Subentidad</label>
+						<md-input v-model="data_dsaas.subentity" required></md-input>
+					</md-field>
+				
+					<md-field>
+						<label>Almacenamiento</label>
+						<md-input v-model="data_dsaas.storage" required></md-input>
+					</md-field>
+					
+					<md-field>
+						<label>Salvas</label>
+						<md-input v-model="data_dsaas.saves" required></md-input>
+					</md-field>
+        </md-dialog-content>
+
+        <md-dialog-actions>
+			
+            <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
+        </md-dialog-actions>
+    </md-dialog>
 
 </div>
 
@@ -136,6 +218,22 @@ export default {
                 structure: null,
                 criticity: null,
                 comments: null
+            },
+            data_iaas: {
+                subentity: null,
+                cpu: null,
+                ram: null,
+                cap_alm: null,
+                thru_alm: null,
+                trans_net: null,
+                rec_net: null,
+                core_gpu: null,
+                mem_gpu: null
+            },
+            data_dsaas: {
+                subentity: null,
+                storage: null,
+                saves: null
             }
         };
     },
@@ -174,7 +272,28 @@ export default {
                     criticity: null,
                     comments: null
                 };
+            } else if (this.mode == "iaas") {
+                var send_data = this.data_iaas;
+                this.data_iaas = {
+                    subentity: null,
+                    cpu: null,
+                    ram: null,
+                    cap_alm: null,
+                    thru_alm: null,
+                    trans_net: null,
+                    rec_net: null,
+                    core_gpu: null,
+                    mem_gpu: null
+                };
+            } else if (this.mode == "dsaas") {
+                var send_data = this.data_dsaas;
+                this.data_dsaas = {
+                    subentity: null,
+                    storage: null,
+                    saves: null
+                };
             }
+
             return send_data;
         }
     },

@@ -18,8 +18,8 @@
     
     </md-table-row>
     <md-table-empty-state
-        md-label="No hay servicios"
-        :md-description="`No hay servicios agregados a la tabla en estos momentos.`">
+        md-label="No hay elementos"
+        :md-description="`No hay elementos agregados a la tabla en estos momentos.`">
         <md-button class="md-primary md-raised" @click="$emit('new',table.name)">Nuevo</md-button>
       </md-table-empty-state>
 </md-table>
