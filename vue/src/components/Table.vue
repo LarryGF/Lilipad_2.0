@@ -1,10 +1,11 @@
 <template>
   <div>
+      
 <md-table @md-selected="onSelect" v-model="data" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
     <md-table-toolbar>
         <h1 class="md-title">{{table.title}}</h1>
-        <md-button class="md-raised md-accent" @click="del_item(table.name)">Borrar</md-button>
-        <md-button class="md-raised md-primary" @click="save(table.name,data)">Guardar</md-button>
+        <md-button class="md-raised md-accent" @click="$emit('delete',{'name':table.name,'selection':selected})">Borrar</md-button>
+        <md-button class="md-raised md-primary" @click="$emit('save',table.name)">Guardar</md-button>
 
         <md-button class="md-raised md-primary" @click="$emit('new',table.name)">Nuevo</md-button>
         <!-- <md-button class="md-raised md-primary" @click="$emit('update:table',[{service:'mi pinga'}])">Nuevo</md-button> -->
@@ -52,7 +53,9 @@ export default {
         };
     },
     methods: {
-        onSelect: function() {}
+        onSelect: function(items) {
+            this.selected = items;
+        }
     },
     components: {
         Dialog

@@ -3,8 +3,9 @@ Todo:
   ☐ Poblar cada una de las vistas de los pasos
   ☐ Refactorizar el codigo python
   ☐ arreglar el metodo para borrar
-  ☐ hacer el dialogo para agregar servicios
-  ☐ pasar los datos con $emit(<name>,data) 
-
+  ☐ averiguar como averiguar en vue si aun no se ha cargado un elemento
+  
 Archive:
+  ✔ pasar los datos con $emit(<name>,data) @done(18-07-06 21:18) @project(Todo)
+  ✔ hacer el dialogo para agregar servicios @done(18-07-06 21:18) @project(Todo)
   ✔ Agregarle un empty state a cada una de las tablas @done(18-07-06 01:02) @project(Todo)

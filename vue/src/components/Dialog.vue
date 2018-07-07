@@ -82,7 +82,7 @@
 				
 					<md-field>
 						<label>Comentarios</label>
-						<md-input v-model="data_mix.comment" required></md-input>
+						<md-input v-model="data_mix.comments" required></md-input>
 					</md-field>
 								
         </md-dialog-content>
