@@ -283,10 +283,12 @@ export default {
                 saves: null
             },
             data_correo: {
+                name: "correo",
                 ruta_mail: null,
                 date_mail: null
             },
             data_navegacion: {
+                name: "navegacion",
                 ruta_nav: null,
                 usr_list: null,
                 date_nav_inf: null,
@@ -352,12 +354,14 @@ export default {
             } else if (this.mode == "correo") {
                 var send_data = this.data_correo;
                 this.data_correo = {
+                    name: "correo",
                     ruta_mail: null,
                     date_mail: null
                 };
             } else if (this.mode == "navegacion") {
                 var send_data = this.data_navegacion;
                 this.data_navegacion = {
+                    name: "navegacion",
                     ruta_nav: null,
                     usr_list: null,
                     date_nav_inf: null,

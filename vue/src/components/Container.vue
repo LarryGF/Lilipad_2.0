@@ -28,7 +28,7 @@
             <md-tab id="step_5" md-label="Paso 5"></md-tab>
             <md-tab id="step_6" md-label="Paso 6"></md-tab>
             <md-tab id="step_7" md-label="Paso 7"></md-tab>
-
+            <md-tab id="tools" md-label="Herramientas"></md-tab>
           </md-tabs>
         </div>
       </md-app-toolbar>
@@ -62,6 +62,9 @@
       </div>
       <div v-if="active =='step_7'">
         <Step7/>
+      </div>
+      <div v-if="active =='tools'">
+        <Tools/>
       </div>
       
       </md-app-content>

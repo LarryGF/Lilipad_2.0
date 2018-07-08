@@ -22,7 +22,12 @@ def load(table_list):
 @eel.expose
 def delete(table, selected):
     result = func_del(table, selected)
-    print(result)
+    return result
+
+
+@eel.expose
+def tools(data):
+    result = func_tools(data)
     return result
 
 
