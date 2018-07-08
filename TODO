@@ -6,6 +6,8 @@ Todo:
   ☐ averiguar como averiguar en vue si aun no se ha cargado un elemento
   ☐ modificar la tabla para poder pasarle los colores a las columnas
   ☐ hacer un snackbar para mostrar el output del correo y la navegacion
+  ☐ averiuar como hacer para que solo los datos se carguen una sola vez o cada vez que cambien
+  ☐ arreglar un bug en el paso 4 en el que cuando abres y cierras el dialogo de navegacion la proxima vez que lo abras sale el overlay arriba del dialogo
   
 Archive:
   ✔ pasar los datos con $emit(<name>,data) @done(18-07-06 21:18) @project(Todo)

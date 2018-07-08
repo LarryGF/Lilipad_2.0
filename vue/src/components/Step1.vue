@@ -48,7 +48,6 @@ export default {
                 this.users.act = result[0][0]["usract"];
                 this.users.new = result[0][0]["usrnew"];
                 this.users.fut = result[0][0]["usrfutr"];
-                console.log(result);
             });
         }
     },
