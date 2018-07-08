@@ -1,10 +1,10 @@
 <template>
     <md-content>
-        
+        {{dialog_active}}{{dialog}}
         <h3>Escoja cual de las pruebas desea realizar:</h3>
         <md-button class="md-primary md-raised" @click="dialog_active=true,dialog.name='correo'">Correo</md-button>
 		<md-button class="md-primary md-raised" @click="dialog_active=true,dialog.name='navegacion'">Navegacion</md-button>
-        <Dialog :mode="dialog.name" :active="dialog_active" @close="dialog_active=false"  />
+        <Dialog :mode="dialog.name" :active="dialog_active" @close="dialog_active=false" @create="tool($event)" />
   
     </md-content>
 </template>
@@ -21,6 +21,11 @@ export default {
     }),
     components: {
         Dialog
+    },
+    methods: {
+        tool: function(data) {
+            console.log(data);
+        }
     }
 };
 </script>

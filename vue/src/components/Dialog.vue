@@ -173,7 +173,7 @@
         <md-dialog-actions>
 			
             <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
-            <md-button class="md-primary md-raised" @click="$emit('create')" >Crear</md-button>
+            <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
         </md-dialog-actions>
     </md-dialog>
 
@@ -199,7 +199,7 @@
         </md-dialog-actions>
     </md-dialog>
 
-     <md-dialog  v-if="mode == 'navegacion'" :md-active.sync="active" :md-click-outside-to-close="false">
+     <md-dialog  v-if="mode == 'navegacion'" :md-active.sync="active" >
         <md-dialog-title>Correr las pruebas de QoE para navegacion</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -226,20 +226,12 @@
                
 
         <md-dialog-actions>
-			
             <md-button class="md-accent md-raised" @click="$emit('close')">Cerrar</md-button>
             <md-button class="md-primary md-raised" @click="$emit('create',new_service())" >Crear</md-button>
         </md-dialog-actions>
     </md-dialog>
 
 </div>
-
-
-
-
-
-
-
 </template>
 
 <script type="text/javascript">
@@ -356,6 +348,20 @@ export default {
                     subentity: null,
                     storage: null,
                     saves: null
+                };
+            } else if (this.mode == "correo") {
+                var send_data = this.data_correo;
+                this.data_correo = {
+                    ruta_mail: null,
+                    date_mail: null
+                };
+            } else if (this.mode == "navegacion") {
+                var send_data = this.data_navegacion;
+                this.data_navegacion = {
+                    ruta_nav: null,
+                    usr_list: null,
+                    date_nav_inf: null,
+                    date_nav_sup: null
                 };
             }
 
