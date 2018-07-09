@@ -25,3 +25,10 @@ def func_tools(object):
                           object['usr_list'], object['date_nav_inf'], object['date_nav_sup'])
 
     return result
+
+
+def func_usage(data):
+    from step_5 import step5
+    result = step5(data['service'], data['user'],
+                   data['password'], data['ip'], data['date_start'], data['date_end'])
+    return result

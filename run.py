@@ -31,4 +31,10 @@ def tools(data):
     return result
 
 
+@eel.expose
+def usage(data):
+    result = func_usage(data)
+    return result
+
+
 eel.start('index.html', options={'port': 8686})
