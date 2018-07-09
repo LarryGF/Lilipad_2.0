@@ -4,12 +4,13 @@
 <md-table @md-selected="onSelect" v-model="data" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
     <md-table-toolbar>
         <h1 class="md-title">{{table.title}}</h1>
+        <div v-if="!hide">
         <md-button class="md-raised md-accent" @click="$emit('delete',{'name':table.name,'selection':selected})">Borrar</md-button>
         <md-button class="md-raised md-primary" @click="$emit('save',table.name)">Guardar</md-button>
 
         <md-button class="md-raised md-primary" @click="$emit('new',table.name)">Nuevo</md-button>
         <!-- <md-button class="md-raised md-primary" @click="$emit('update:table',[{service:'mi pinga'}])">Nuevo</md-button> -->
-    
+    </div>
 
     </md-table-toolbar>
 
@@ -45,6 +46,10 @@ export default {
         columns: {
             type: Array,
             required: true
+        },
+        hide: {
+            type: Boolean,
+            required: false
         }
     },
     data() {

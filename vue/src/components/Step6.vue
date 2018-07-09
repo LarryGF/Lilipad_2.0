@@ -1,6 +1,6 @@
 <template>
 <md-content>
-   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="tab_ut_serv" :table="table"  @new="dialog_active=true, dialog.name = $event" @save="save($event)" @delete="del_item($event)"/>  
+   <Table v-for="table in tables" :key="table.name" :columns="table.columns" :data="tab_ut_serv" :table="table" :hide="true" @new="dialog_active=true, dialog.name = $event" @save="save($event)" @delete="del_item($event)"/>  
 </md-content>
 </template>
 
