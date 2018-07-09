@@ -108,19 +108,7 @@ export default {
             });
         }
     },
-    methods: {
-        create_service: function(data) {
-            this.tables[this.dialog.name].table.push(data);
-        },
-        save: function(table) {
-            eel.save(table, this.tables[table].table)();
-        },
-        del_item: function(table) {
-            eel.delete(this.tables[table.name].table, table.selection)(
-                result => (this.tables[table.name].table = result)
-            );
-        }
-    },
+    methods: {},
     created() {
         this.load;
     },
