@@ -21,7 +21,7 @@
     <md-table-empty-state
         md-label="No hay elementos"
         :md-description="`No hay elementos agregados a la tabla en estos momentos.`">
-        <md-button class="md-primary md-raised" @click="$emit('new',table.name)">Nuevo</md-button>
+        <md-button v-if="!hide" class="md-primary md-raised" @click="$emit('new',table.name)">Nuevo</md-button>
       </md-table-empty-state>
 </md-table>
 

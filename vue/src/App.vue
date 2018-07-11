@@ -37,7 +37,9 @@ export default {
 .md-menu-content {
     z-index: 11;
 }
-
+.md-dialog {
+    background-color: #fff;
+}
 img {
     width: 80px;
 }

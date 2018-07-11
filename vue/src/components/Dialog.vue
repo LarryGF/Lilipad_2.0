@@ -2,7 +2,7 @@
 
 <div>
 
-<md-dialog  v-if="mode == 'tab_serv'" :md-active.sync="active" :md-click-outside-to-close="false">
+<md-dialog :md-backdrop="false" v-if="mode == 'tab_serv'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar Servivicio</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -52,7 +52,7 @@
         </md-dialog-actions>
     </md-dialog>
 
-    <md-dialog  v-if="mode == 'existentes' || mode == 'nuevos' || mode == 'futuros'" :md-active.sync="active" :md-click-outside-to-close="false">
+    <md-dialog :md-backdrop="false" v-if="mode == 'existentes' || mode == 'nuevos' || mode == 'futuros'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar servicios {{mode}}</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -94,7 +94,7 @@
         </md-dialog-actions>
     </md-dialog>
     
-    <md-dialog  v-if="mode == 'iaas'" :md-active.sync="active" :md-click-outside-to-close="false">
+    <md-dialog :md-backdrop="false" v-if="mode == 'iaas'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar recursos asignados a IaaS</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -151,7 +151,7 @@
         </md-dialog-actions>
     </md-dialog>
 
-    <md-dialog  v-if="mode == 'dsaas'" :md-active.sync="active" :md-click-outside-to-close="false">
+    <md-dialog :md-backdrop="false" v-if="mode == 'dsaas'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Agregar recursos asignados a DSaaS</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -177,7 +177,7 @@
         </md-dialog-actions>
     </md-dialog>
 
-    <md-dialog  v-if="mode == 'correo'" :md-active.sync="active" :md-click-outside-to-close="false">
+    <md-dialog :md-backdrop="false" v-if="mode == 'correo'" :md-active.sync="active" :md-click-outside-to-close="false">
         <md-dialog-title>Correr las pruebas de QoE para el correo</md-dialog-title>
         <md-dialog-content>
 					
@@ -199,7 +199,7 @@
         </md-dialog-actions>
     </md-dialog>
 
-     <md-dialog  v-if="mode == 'navegacion'" :md-active.sync="active" >
+     <md-dialog :md-backdrop="false" v-if="mode == 'navegacion'" :md-active.sync="active" >
         <md-dialog-title>Correr las pruebas de QoE para navegacion</md-dialog-title>
         <md-dialog-content>
 					<md-field>
@@ -376,3 +376,15 @@ export default {
     created() {}
 };
 </script>
+
+<style>
+.md-dialog {
+    background-color: #fff;
+    background-color: var(--md-theme-demo-light-background, #fff);
+    color: rgba(0, 0, 0, 0.87);
+    color: var(
+        --md-theme-demo-light-text-primary-on-background,
+        rgba(0, 0, 0, 0.87)
+    );
+}
+</style>
