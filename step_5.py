@@ -116,3 +116,4 @@ def step5 (servicio,user,passw,db_addr,st,et):
             print('success')
     load_step6(servicio)
     step7(servicio)
+    return 'Finished'
