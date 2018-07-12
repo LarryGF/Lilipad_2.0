@@ -1,6 +1,8 @@
 import os
 import json
 
+data_dir = os.path.join(os.path.abspath('.'), 'data')
+
 
 def load_step6(servicio):
     '''
@@ -20,7 +22,7 @@ def load_step6(servicio):
         sumatoria = json.load(f)
 
     vm_values['Sumatoria'] = sumatoria
-    with open('tab_serv.json', 'r') as f:
+    with open(os.path.join(data_dir, 'tab_serv.json'), 'r') as f:
         dic2 = json.load(f)
 
     dict_to_send = {}
@@ -131,6 +133,6 @@ def load_step6(servicio):
 
         dict_to_send[vm] = row
 
-    with open('tab_ut_serv.json', 'w') as file:
+    with open(os.path.join(data_dir, 'tab_ut_serv.json'), 'w') as file:
         json.dump(dict_to_send, file)
     file.close()

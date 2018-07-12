@@ -1,7 +1,9 @@
 import json
 import os
 
- 
+data_dir = os.path.join(os.path.abspath('.'), 'data')
+
+
 def step7(servicio):
     utilizacion_fut = {}
     utilizacion_inm = {}
@@ -12,37 +14,41 @@ def step7(servicio):
     '''Formula:
     Utilizaciónfutura=Utilizaciónactual*Usuariosfuturos/Usuariosactuales*β
     '''
-    with open('{}.json'.format(os.path.join(os.getcwd(),'step6',servicio))) as f:
+    with open('{}.json'.format(os.path.join(os.getcwd(), 'step6', servicio))) as f:
         utilizacion = json.load(f)
-    with open('step_1.json') as f:
+    with open(os.path.join(data_dir, 'step_1.json')) as f:
         user_dic = json.load(f)
         print(user_dic)
 
-    users_act = user_dic['usract']
-    users_new  = user_dic['usrnew']
-    users_fut = user_dic['usrfutr']
+    users_act = user_dic['1']['usract']
+    users_new = user_dic['1']['usrnew']
+    users_fut = user_dic['1']['usrfutr']
 
-    for root,dirnames,files in os.walk(os.path.join(os.getcwd(),'step5',servicio)):
+    for root, dirnames, files in os.walk(os.path.join(os.getcwd(), 'step5', servicio)):
         for file in files:
-            with open(os.path.join(root,file)) as f:
+            with open(os.path.join(root, file)) as f:
                 vm = json.load(f)
             pmax = vm['Index']['CPU Usage']['Percentil_max']
-            pmax_calc_inm = round(float(pmax)*float(users_new)/float(users_act),2)
+            pmax_calc_inm = round(
+                float(pmax)*float(users_new)/float(users_act), 2)
             util_inm_cpu += int(pmax_calc_inm/100)+1
-            pmax_calc_fut = round(float(pmax)*float(users_fut)/float(users_act),2)
+            pmax_calc_fut = round(
+                float(pmax)*float(users_fut)/float(users_act), 2)
             util_fut_cpu += int(pmax_calc_fut/100)+1
-    
+
     for item in utilizacion.keys():
         util_act = utilizacion[item]['Percentil_max']
         if item == 'CPU Usage':
-            utilizacion_fut[item]=util_fut_cpu
-            utilizacion_inm[item]=util_inm_cpu
+            utilizacion_fut[item] = util_fut_cpu
+            utilizacion_inm[item] = util_inm_cpu
         else:
-            util_fut = round(float(util_act)*float(users_fut)/float(users_act),2)
-            util_inm = round(float(util_act)*float(users_new)/float(users_act),2)
+            util_fut = round(
+                float(util_act)*float(users_fut)/float(users_act), 2)
+            util_inm = round(
+                float(util_act)*float(users_new)/float(users_act), 2)
             utilizacion_fut[item] = util_fut
             utilizacion_inm[item] = util_inm
-        
+
     row['service'] = servicio
 
     for key in utilizacion_fut:
@@ -70,8 +76,6 @@ def step7(servicio):
         elif key == 'iostat.sda':
             row['iops'] = utilizacion_fut[key]
 
-
-
     for key in utilizacion_inm:
         if key == 'read.sda':
             row['read2'] = utilizacion_inm[key]
@@ -97,9 +101,13 @@ def step7(servicio):
         elif key == 'iostat.sda':
             row['iops2'] = utilizacion_inm[key]
 
+    f = open(os.path.join(data_dir, 'step_7.json'))
+    dic_to_save = json.load(f)
+    print(dic_to_save)
     dic_to_save[servicio] = row
     print(dic_to_save)
+    f.close()
 
-    with open('step_7.json','w') as f:
+    with open(os.path.join(data_dir, 'step_7.json'), 'w') as f:
         json.dump(dic_to_save, f)
-    
+    f.close()
