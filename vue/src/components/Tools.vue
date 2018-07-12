@@ -10,17 +10,17 @@
       <md-list-item>
         <md-field>
             <label>Usuario de Opennebula</label>
-            <md-input v-model="one_user" required></md-input>
+            <md-input v-model="data.one.one_user" required></md-input>
         </md-field>
       
        <md-field>
             <label>Password de Opennebula</label>
-            <md-input v-model="one_pass" required></md-input>
+            <md-input v-model="data.one.one_pass" required></md-input>
         </md-field>
 
          <md-field>
             <label>Hostname(IP) de Opennebula</label>
-            <md-input v-model="one_ip" required></md-input>
+            <md-input v-model="data.one.one_ip" required></md-input>
         </md-field>
       
       
@@ -29,23 +29,45 @@
         
         <md-field>
             <label>Usuario de Proxmox</label>
-            <md-input v-model="prox.prox_user" required></md-input>
+            <md-input v-model="data.prox.prox_user" required></md-input>
         </md-field>
       
        <md-field>
             <label>Password de Proxmox</label>
-            <md-input v-model="prox.prox_pass" required></md-input>
+            <md-input v-model="data.prox.prox_pass" required></md-input>
         </md-field>
 
          <md-field>
             <label>Hostname(IP) de Proxmox</label>
-            <md-input v-model="prox.prox_ip" required></md-input>
+            <md-input v-model="data.prox.prox_ip" required></md-input>
+        </md-field>
+        
+    </md-list-item>     
+    <md-list-item>
+        
+        <md-field>
+            <label>Usuario de Zabbix</label>
+            <md-input v-model="data.zabbix.zabbix_user" required></md-input>
+        </md-field>
+      
+       <md-field>
+            <label>Password de Zabbix</label>
+            <md-input v-model="data.zabbix.zabbix_pass" required></md-input>
+        </md-field>
+
+         <md-field>
+            <label>Hostname(IP) de Zabbix</label>
+            <md-input v-model="data.zabbix.zabbix_ip" required></md-input>
+        </md-field>
+        <md-field>
+            <label>Nombre de la base de datos de Zabbix</label>
+            <md-input v-model="data.zabbix.zabbix_db" required></md-input>
         </md-field>
         
     </md-list-item>      
     <md-list-item>
         <span>Enviar los datos para ser procesados</span>
-        <md-button class="md-primary md-raised">Enviar</md-button>
+        <md-button class="md-primary md-raised" @click="map(data)">Enviar</md-button>
     </md-list-item>
     <md-divider></md-divider>
       </md-list>
@@ -60,17 +82,31 @@ export default {
     name: "Tools",
     data: () => ({
         dialog_active: false,
-        one_user: null,
-        one_pass: null,
-        one_ip: null,
         result: null,
         amount: null,
-        prox: {}
+        data: {
+            one: {
+                one_user: null,
+                one_pass: null,
+                one_ip: null
+            },
+            prox: {
+                prox_user: null,
+                prox_pass: null,
+                prox_ip: null
+            },
+            zabbix: {
+                zabbix_user: null,
+                zabbix_pass: null,
+                zabbix_ip: null,
+                zabbix_db: null
+            }
+        }
     }),
     components: {},
     methods: {
-        tool: function(data) {
-            eel.tools(data)(result => (this.result = result));
+        map: function(data) {
+            eel.map(data)(result => (this.result = result));
         }
     }
 };

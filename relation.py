@@ -72,7 +72,14 @@ def relation_prox(password_prox, user_prox, ip_prox,user_zabbix,password_zabbix,
 	
 	print("-----------------------------------------------------------------------------------------------------------------------------------------------------")
 
-	f=open("parser.json")
+	try:
+		f = open("parser.json")
+	except:
+		f = open("parser.json", "w")
+		f.write('{}')
+		f.close()
+		f = open("parser.json")
+
 	var=json.load(f)
 	for i in nameprox_namezbbbx:
 		var[i["id_prox"]]=i['name_zabbix']
@@ -80,8 +87,10 @@ def relation_prox(password_prox, user_prox, ip_prox,user_zabbix,password_zabbix,
 	f=open("parser.json","w")
 	json.dump(var,f)
 	f.close()
+	print('Finished Prox')
+	return 'Success Prox'
 
-relation_prox("team_manager*", "root", "10.8.9.202","zabbixinfo","1234", "10.8.6.164","zabbix")
+# relation_prox("team_manager*", "root", "10.8.9.202","zabbixinfo","1234", "10.8.6.164","zabbix")
 
 
 
@@ -181,8 +190,14 @@ def relation_one(password_one, user_one, ip_one,user_zabbix,password_zabbix,ip_z
 	
 	print("-----------------------------------------------------------------------------------------------------------------------------------------------------")
 
+	try:
+		f = open("parser.json")
+	except:
+		f = open("parser.json", "w")
+		f.write('{}')
+		f.close()
+		f = open("parser.json")
 
-	f=open("parser.json")
 	var=json.load(f)
 	for i in nameone_namezbbbx:
 		var[i["name_one"]]=i['name_zabbix']
@@ -190,7 +205,8 @@ def relation_one(password_one, user_one, ip_one,user_zabbix,password_zabbix,ip_z
 	f=open("parser.json","w")
 	json.dump(var,f)
 	f.close()
-	
+	print('finished one')
+	return 'Success ONE'
 
-relation_one("opennebula_manager*", "root", "opennebula.cujae.edu.cu","zabbixinfo","1234","10.8.6.164","zabbix")
+# relation_one("opennebula_manager*", "root", "opennebula.cujae.edu.cu","zabbixinfo","1234","10.8.6.164","zabbix")
 

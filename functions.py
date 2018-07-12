@@ -32,3 +32,12 @@ def func_usage(data):
     result = step5(data['service'], data['user'],
                    data['password'], data['ip'], data['date_start'], data['date_end'])
     return result
+
+
+def func_map(data):
+    from relation import relation_one, relation_prox
+    result1 = relation_one(data['one']['one_pass'], data['one']['one_user'], data['one']
+                           ['one_ip'], data['zabbix']['zabbix_user'], data['zabbix']['zabbix_pass'], data['zabbix']['zabbix_ip'], data['zabbix']['zabbix_db'])
+    result2 = relation_prox(data['prox']['prox_pass'], data['prox']['prox_user'], data['prox']
+                            ['prox_ip'], data['zabbix']['zabbix_user'], data['zabbix']['zabbix_pass'], data['zabbix']['zabbix_ip'], data['zabbix']['zabbix_db'])
+    return result1, result2
