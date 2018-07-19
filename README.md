@@ -1,6 +1,12 @@
 # Lilipad_2.0
 
-It's still in development mode, you must run first (in your console):
+If you don't have npm installed install npm for your distribution. After that, run in the project's root folder: 
+```bash
+npm install vue vue-material
+```
+
+
+Bear in mind it's still in development mode, you must run first (in your console):
 ```bash
 make vuedev
 ```
